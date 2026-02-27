@@ -48,7 +48,7 @@ const Pricing: React.FC = () => {
               </ul>
             </div>
 
-            <a href="https://omegaion.vercel.app/login" className="block text-center w-full py-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-colors mt-auto shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+            <a href="https://app.omegaion.com/login" className="block text-center w-full py-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-colors mt-auto shadow-[0_0_20px_rgba(34,211,238,0.4)]">
               {t.pricing.founder.cta}
             </a>
           </motion.div>
