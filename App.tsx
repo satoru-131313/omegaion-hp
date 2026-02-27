@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
 import Regulations from './components/Regulations';
@@ -42,9 +44,27 @@ const Navbar = () => {
   );
 };
 
-function App() {
+// 中身の表示とSEO情報（Helmet）を管理するコンポーネント
+const PageContent = () => {
+  const { t, language } = useLanguage();
+
   return (
-    <LanguageProvider>
+    <>
+      <Helmet>
+        <html lang={language === 'jp' ? 'ja' : language} />
+        <title>{t.seo.title}</title>
+        <meta name="description" content={t.seo.description} />
+        <meta name="keywords" content={t.seo.keywords} />
+        
+        {/* 多言語SEOの最重要タグ（hreflang）：Googleに「どの言語のURLがどこにあるか」を教える */}
+        <link rel="alternate" href="https://omegaion.com/" hreflang="ja" />
+        <link rel="alternate" href="https://omegaion.com/en" hreflang="en" />
+        <link rel="alternate" href="https://omegaion.com/es" hreflang="es" />
+        <link rel="alternate" href="https://omegaion.com/fr" hreflang="fr" />
+        <link rel="alternate" href="https://omegaion.com/pt" hreflang="pt" />
+        <link rel="alternate" href="https://omegaion.com/" hreflang="x-default" />
+      </Helmet>
+
       <div className="min-h-screen bg-slate-950 text-slate-50 selection:bg-cyan-500 selection:text-slate-950 relative">
         <Navbar />
         <main>
@@ -60,7 +80,23 @@ function App() {
         </main>
         <Footer />
       </div>
-    </LanguageProvider>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <HelmetProvider>
+      {/* BrowserRouterがURLの管理をする大枠 */}
+      <BrowserRouter>
+        <LanguageProvider>
+          <Routes>
+            {/* どのURL（/, /en, /es）でアクセスされてもPageContentを表示し、中のContextが言語を判別する */}
+            <Route path="*" element={<PageContent />} />
+          </Routes>
+        </LanguageProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

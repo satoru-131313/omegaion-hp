@@ -1,8 +1,11 @@
 export const translations = {
   jp: {
-    nav: {
-      login: "ログイン"
+    seo: {
+      title: "Omegaion | ESG・環境規制予測AI - 世界のサステナビリティニュースを可視化",
+      description: "AIが多言語ソースからESG、環境問題、気候変動リスク、規制動向を解析。地図上で世界中の事実をリアルタイムに可視化し、サステナビリティに関する最短距離での意思決定をサポートします。",
+      keywords: "ESG, サステナビリティ, 環境ニュース, 気候変動, 規制予測, AI, リアルタイム監視"
     },
+    nav: { login: "ログイン" },
     common: {
       patent: "特許出願中",
       chapters: ["01 Visualization", "02 Solutions", "03 Rules"]
@@ -136,7 +139,7 @@ export const translations = {
           "戦略レポート自動生成",
           "すべての基本機能アクセス"
         ],
-        cta: "4月1日より受付開始" // ← ここを変更しました
+        cta: "4月1日より受付開始"
       },
       business: {
         name: "Business Plan",
@@ -150,6 +153,11 @@ export const translations = {
     }
   },
   en: {
+    seo: {
+      title: "Omegaion | ESG & Environmental Regulation AI - Global Sustainability News",
+      description: "AI analyzes ESG, environmental issues, climate risks, and regulatory updates from multi-language sources. Visualize global facts on a map to support rapid sustainability decision-making.",
+      keywords: "ESG, Sustainability, Environmental News, Climate Risk, Regulation Prediction, AI"
+    },
     nav: { login: "Login" },
     common: {
       patent: "Patent Pending",
@@ -284,7 +292,7 @@ export const translations = {
           "Automated strategy reports",
           "Access to all basic features"
         ],
-        cta: "Available April 1st" // ← ここを変更しました
+        cta: "Available April 1st"
       },
       business: {
         name: "Business Plan",
@@ -298,6 +306,11 @@ export const translations = {
     }
   },
   es: {
+    seo: {
+      title: "Omegaion | IA de ESG y Regulación - Noticias Globales de Sostenibilidad",
+      description: "La IA analiza ESG, problemas ambientales y actualizaciones regulatorias de fuentes multilingües. Visualice hechos globales en un mapa para la toma de decisiones.",
+      keywords: "ESG, Sostenibilidad, Noticias Ambientales, Cambio Climático, IA"
+    },
     nav: { login: "Iniciar sesión" },
     common: {
       patent: "Patente Pendiente",
@@ -432,7 +445,7 @@ export const translations = {
           "Informes de estrategia automatizados",
           "Acceso a todas las funciones básicas"
         ],
-        cta: "Disponible el 1 de abril" // ← ここを変更しました
+        cta: "Disponible el 1 de abril"
       },
       business: {
         name: "Plan Negocios",
@@ -446,6 +459,11 @@ export const translations = {
     }
   },
   fr: {
+    seo: {
+      title: "Omegaion | IA ESG & Réglementation - Actualité Mondiale de la Durabilité",
+      description: "L'IA analyse l'ESG, les risques climatiques et les évolutions réglementaires à partir de sources multilingues.",
+      keywords: "ESG, Durabilité, Actualités Environnementales, Risque Climatique, IA"
+    },
     nav: { login: "Connexion" },
     common: {
       patent: "Brevet En Instance",
@@ -580,7 +598,7 @@ export const translations = {
           "Rapports stratégiques automatisés",
           "Accès à toutes les fonctions de base"
         ],
-        cta: "Disponible le 1er avril" // ← ここを変更しました
+        cta: "Disponible le 1er avril"
       },
       business: {
         name: "Plan Affaires",
@@ -594,6 +612,11 @@ export const translations = {
     }
   },
   pt: {
+    seo: {
+      title: "Omegaion | IA de ESG e Regulamentação - Notícias de Sustentabilidade",
+      description: "A IA analisa ESG, questões ambientais e atualizações regulatórias de fontes multilíngues. Visualize fatos globais em um mapa.",
+      keywords: "ESG, Sustentabilidade, Notícias Ambientais, Mudanças Climáticas, IA"
+    },
     nav: { login: "Entrar" },
     common: {
       patent: "Patente Pendente",
@@ -688,7 +711,7 @@ export const translations = {
         title: "Alerta de Precisão",
         subtitle: "Zero Falhas. 90% de Redução no Esforço.",
         desc: "A IA escaneia notícias globais duas vezes ao dia (últimas 12h). Nosso algoritmo determina o impacto e extrai apenas informações críticas relacionadas às suas 'Tags de Monitoramento'.",
-        features: ["Zero Tempo de Pesquisa", "Eliminação de Ruído", "Detecção Precoce"]
+        features: ["Zero Tempo de Pesquisa", "Eliminación de Ruído", "Detecção Precoce"]
       },
       report: {
         title: "Inteligência Contextual",
@@ -728,7 +751,7 @@ export const translations = {
           "Relatórios de estratégia automatizados",
           "Acesso a todos os recursos básicos"
         ],
-        cta: "Disponível em 1º de abril" // ← ここを変更しました
+        cta: "Disponível em 1º de abril"
       },
       business: {
         name: "Plano Empresarial",

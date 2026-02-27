@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { translations } from '../utils/translations';
 
 type Language = 'jp' | 'en' | 'es' | 'fr' | 'pt';
@@ -10,47 +11,46 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-// サポートしている言語のリストを定義
 const SUPPORTED_LANGUAGES: Language[] = ['jp', 'en', 'es', 'fr', 'pt'];
 
-// ユーザーにとって最適な初期言語を決定する関数
-const getInitialLanguage = (): Language => {
-  // 1. 以前にユーザーが手動で選んだ言語（ローカルストレージ）があれば、それを最優先する
-  const savedLanguage = localStorage.getItem('app_language') as Language;
-  if (savedLanguage && SUPPORTED_LANGUAGES.includes(savedLanguage)) {
-    return savedLanguage;
-  }
-
-  // 2. ブラウザの設定言語を取得する（例: "ja", "en-US", "fr-FR" など）
-  const browserLang = navigator.language.toLowerCase();
-
-  // 3. ブラウザの言語に合わせて表示言語を判定
-  // 注意：ブラウザで日本語は 'ja' と判定されるため、アプリ内の 'jp' に変換します
-  if (browserLang.startsWith('ja')) return 'jp';
-  if (browserLang.startsWith('en')) return 'en';
-  if (browserLang.startsWith('es')) return 'es';
-  if (browserLang.startsWith('fr')) return 'fr';
-  if (browserLang.startsWith('pt')) return 'pt';
-
-  // 4. どれにも当てはまらない場合（ドイツ語など）のデフォルト言語
-  // グローバルなプロダクトの場合は 'en'（英語）をデフォルトにするのが一般的です
-  return 'en'; 
-};
-
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // useState の初期値に、先ほど作った判定関数をセットする
-  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [language, setLanguageState] = useState<Language>('jp');
 
-  // 言語（language）が変更されるたびに、ブラウザの保存領域（localStorage）に記憶させる
   useEffect(() => {
-    localStorage.setItem('app_language', language);
-  }, [language]);
+    // URLのパス（/en など）から言語を取得
+    const pathLang = location.pathname.split('/')[1] as Language;
+    
+    if (SUPPORTED_LANGUAGES.includes(pathLang)) {
+      if (language !== pathLang) {
+        setLanguageState(pathLang);
+        localStorage.setItem('app_language', pathLang);
+      }
+    } else if (location.pathname === '/') {
+      // トップページの場合は以前選んだ言語を確認
+      const savedLanguage = localStorage.getItem('app_language') as Language;
+      if (savedLanguage && SUPPORTED_LANGUAGES.includes(savedLanguage) && savedLanguage !== 'jp') {
+          // 過去に英語などを選んでいた場合はそのURLへ飛ばす
+          navigate(`/${savedLanguage}`, { replace: true });
+      } else {
+        setLanguageState('jp');
+      }
+    }
+  }, [location.pathname, navigate, language]);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    localStorage.setItem('app_language', lang);
+    // ボタンが押されたらURLも変更する
+    const newPath = lang === 'jp' ? '/' : `/${lang}`;
+    navigate(newPath);
+  };
 
   const value = {
     language,
     setLanguage,
-    t: translations[language]
+    t: translations[language] || translations.jp
   };
 
   return (
