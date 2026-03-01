@@ -18,24 +18,26 @@ const Navbar = () => {
   
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
-      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <div className="flex items-center">
-          <img src="/logo.png" alt="OmegaIon" className="h-8 w-auto object-contain" />
+          <img src="/logo.png" alt="OmegaIon" className="h-6 sm:h-8 w-auto object-contain" />
         </div>
         
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-lg p-1">
+        <div className="flex items-center gap-2 sm:gap-4">
+          {/* スマホ用にgapとpaddingを縮小 */}
+          <div className="flex items-center gap-0.5 sm:gap-1 bg-slate-900 border border-slate-700 rounded-lg p-0.5 sm:p-1">
              {(['jp', 'en', 'es', 'fr', 'pt'] as const).map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
-                  className={`px-2 py-1 text-xs font-bold rounded uppercase transition-colors ${language === lang ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+                  // スマホ用に文字サイズとパディングを縮小
+                  className={`px-1.5 py-0.5 sm:px-2 sm:py-1 text-[10px] sm:text-xs font-bold rounded uppercase transition-colors ${language === lang ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
                 >
                   {lang}
                 </button>
              ))}
           </div>
-          <a href="https://app.omegaion.com/login" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
+          <a href="https://app.omegaion.com/login" className="text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-colors">
             {t.nav.login}
           </a>
         </div>
@@ -44,7 +46,6 @@ const Navbar = () => {
   );
 };
 
-// 中身の表示とSEO情報（Helmet）を管理するコンポーネント
 const PageContent = () => {
   const { t, language } = useLanguage();
 
@@ -56,7 +57,6 @@ const PageContent = () => {
         <meta name="description" content={t.seo.description} />
         <meta name="keywords" content={t.seo.keywords} />
         
-        {/* 多言語SEOの最重要タグ（hreflang）：Googleに「どの言語のURLがどこにあるか」を教える */}
         <link rel="alternate" href="https://omegaion.com/" hreflang="ja" />
         <link rel="alternate" href="https://omegaion.com/en" hreflang="en" />
         <link rel="alternate" href="https://omegaion.com/es" hreflang="es" />
@@ -87,11 +87,9 @@ const PageContent = () => {
 function App() {
   return (
     <HelmetProvider>
-      {/* BrowserRouterがURLの管理をする大枠 */}
       <BrowserRouter>
         <LanguageProvider>
           <Routes>
-            {/* どのURL（/, /en, /es）でアクセスされてもPageContentを表示し、中のContextが言語を判別する */}
             <Route path="*" element={<PageContent />} />
           </Routes>
         </LanguageProvider>
