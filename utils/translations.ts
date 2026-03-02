@@ -1,9 +1,9 @@
 export const translations = {
   jp: {
     seo: {
-      title: "Omegaion | ESG・環境規制予測AI - 世界のサステナビリティニュースを可視化",
-      description: "AIが多言語ソースからESG、環境問題、気候変動リスク、規制動向を解析。地図上で世界中の事実をリアルタイムに可視化し、サステナビリティに関する最短距離での意思決定をサポートします。",
-      keywords: "ESG, サステナビリティ, 環境ニュース, 気候変動, 規制予測, AI, リアルタイム監視"
+      title: "Omegaion（オメガイオン）| ESG・環境規制予測AI - 世界のサステナビリティニュースを可視化",
+      description: "Omegaion（オメガイオン）のAIが多言語ソースからESG、環境問題、気候変動リスク、規制動向を解析。地図上で世界中の事実をリアルタイムに可視化し、サステナビリティに関する最短距離での意思決定をサポートします。",
+      keywords: "オメガイオン, Omegaion, ESG, サステナビリティ, 環境ニュース, 気候変動, 規制予測, AI, リアルタイム監視"
     },
     nav: { login: "ログイン" },
     common: {
@@ -18,7 +18,7 @@ export const translations = {
       title_sol: "解決",
       title_suffix: "そのすべてに、",
       title_main: "最短距離を。",
-      desc: "分断された「地図・環境・ルール」をAIが統合。意思決定までの時間を、圧倒的に短縮します。",
+      desc: "分断された「地図・環境・ルール」をAIが統合。最新の環境ニュースやESG規制を可視化し、意思決定までの時間を圧倒的に短縮します。",
       cta: "今すぐ体験する"
     },
     problem: {
@@ -171,7 +171,7 @@ export const translations = {
       title_sol: "Solutions",
       title_suffix: "Shortest distance to",
       title_main: "Everything.",
-      desc: "Integrating Maps, Environment, and Regulations. Drastically reducing decision-making time.",
+      desc: "Integrating maps and sustainability news. AI analyzes ESG regulations to drastically reduce decision-making time.",
       cta: "Experience Now"
     },
     problem: {
@@ -513,7 +513,7 @@ export const translations = {
         total_signals: "Rapports Analysés",
         search_placeholder: "Chercher événements...",
         heatwave: "Temp. Record : Texas",
-        flood: "Inondation Majeure : Inde"
+        flood: "Inundación Majeure : Inde"
       }
     },
     features: {
