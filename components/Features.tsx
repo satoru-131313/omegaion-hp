@@ -146,7 +146,7 @@ const Features: React.FC = () => {
                          <Zap className="w-4 h-4 text-yellow-400" /> {t.features.advantage}
                       </h4>
                       <ul className="space-y-3">
-                         {t.features.points.map((point, i) => (
+                         {t.features.points.map((point: string, i: number) => (
                            <li key={i} className="flex items-start gap-3">
                               <CheckCircle2 className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
                               <span className="text-xs md:text-sm text-slate-300">{point}</span>
@@ -159,9 +159,7 @@ const Features: React.FC = () => {
              
              {/* 3D Solution Matching Visual - RESPONSIVE (Two Separate Layouts) */}
              <div className="order-1 lg:order-2 w-full flex items-center justify-center">
-                {/* 親要素のコンテナ：ガラスパネルとperspective効果は共有
-                  スマホ（md未満）では `h-auto` で中身に合わせ、PCでは `h-[600px]` 固定にする。
-                */}
+                {/* 親要素のコンテナ：ガラスパネルとperspective効果は共有 */}
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -175,43 +173,27 @@ const Features: React.FC = () => {
 
                     {/* ========================================================
                       ----- スマホ用レイアウト (`md:hidden`) -----
-                      上から下へ流れる、シンプルでクリーンな縦型フロー。
-                      歪みやすいSVGパスを使いません。
                     ======================================================== */}
                     <div className="md:hidden flex flex-col items-center gap-6 py-10 px-4 relative z-10 w-full h-auto">
-                        
-                        {/* 1. 問題カード (中央寄せ) */}
                         <ProblemCard t={t} isMobile={true}/>
-
-                        {/* スマホ用縦型パイプ (シンプルな animated div) */}
                         <motion.div 
                            className="h-10 w-px bg-gradient-to-b from-red-500 to-cyan-500"
                            initial={{ scaleY: 0 }}
                            whileInView={{ scaleY: 1 }}
                            transition={{ delay: 0.3, duration: 0.5 }}
                         />
-
-                        {/* 2. 中心調査要素 (中央寄せ、スケール調整) */}
                         <CenterElement isMobile={true}/>
-
-                        {/* スマホ用縦型パイプ */}
                         <motion.div 
                            className="h-10 w-px bg-gradient-to-b from-cyan-500 to-emerald-500"
                            initial={{ scaleY: 0 }}
                            whileInView={{ scaleY: 1 }}
                            transition={{ delay: 0.9, duration: 0.5 }}
                         />
-
-                        {/* 3. 解決カード (中央寄せ) */}
                         <SolutionCard t={t} isMobile={true}/>
-
                     </div>
-
 
                     {/* ========================================================
                       ----- PC用レイアウト (`hidden md:flex`) -----
-                      元の複雑でクールな3D図解をそのまま表示。
-                      絶対配置とSVGパイプによる「地図」構造。
                     ======================================================== */}
                     <div className="hidden md:flex relative z-10 w-full h-full p-6">
                         
@@ -250,17 +232,14 @@ const Features: React.FC = () => {
                         </svg>
 
                         <div className="relative z-10 w-full h-full">
-                           {/* 1. 問題カード (PC用絶対配置、固定幅) */}
                            <ProblemCard t={t} className="absolute top-10 left-12 w-80" isMobile={false} />
-
-                           {/* 2. 中心要素 (PC用絶対配置、元のスケール) */}
                            <CenterElement isMobile={false} />
-
-                           {/* 3. 解決カード (PC用絶対配置、固定幅) */}
+                           
+                           {/* ここに z-20 を追加して重なり順の問題を解決！ */}
                            <div className="absolute bottom-10 right-12 w-80 perspective-1000">
                               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 0.5, y: 0 }} transition={{ delay: 1 }} className="absolute top-4 left-4 right-0 h-32 bg-slate-800 border border-slate-700 rounded-xl z-0 transform scale-95"></motion.div>
                               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 0.7, y: 0 }} transition={{ delay: 1.1 }} className="absolute top-2 left-2 right-0 h-32 bg-slate-800 border border-slate-600 rounded-xl z-10 transform scale-98"></motion.div>
-                              <SolutionCard t={t} isMobile={false} />
+                              <SolutionCard t={t} isMobile={false} className="relative z-20" />
                            </div>
                         </div>
 
