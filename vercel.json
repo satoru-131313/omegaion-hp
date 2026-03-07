@@ -1,4 +1,17 @@
 {
+    "redirects": [
+      {
+        "source": "/(.*)",
+        "has": [
+          {
+            "type": "host",
+            "value": "omegaion-hp.vercel.app"
+          }
+        ],
+        "destination": "https://omegaion.com/$1",
+        "permanent": true
+      }
+    ],
     "rewrites": [
       {
         "source": "/(.*)",
