@@ -13,36 +13,58 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 const SUPPORTED_LANGUAGES: Language[] = ['jp', 'en', 'es', 'fr', 'pt'];
 
+// 新機能：アクセス初回時に最適な言語を自動判定する
+const getOptimalLanguage = (): Language => {
+  // 1. 過去にユーザーが手動で選んだ言語記録があればそれを最優先
+  const savedLang = localStorage.getItem('app_language') as Language;
+  if (savedLang && SUPPORTED_LANGUAGES.includes(savedLang)) {
+    return savedLang;
+  }
+  
+  // 2. ブラウザの設定言語（アクセス地域情報）を取得して自動判定
+  const browserLang = navigator.language.toLowerCase();
+  if (browserLang.startsWith('ja')) return 'jp';
+  if (browserLang.startsWith('es')) return 'es';
+  if (browserLang.startsWith('fr')) return 'fr';
+  if (browserLang.startsWith('pt')) return 'pt';
+  
+  // 3. 上記以外（日本、スペイン、フランス、ポルトガル圏以外）は英語をデフォルトとする
+  return 'en';
+};
+
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [language, setLanguageState] = useState<Language>('jp');
 
   useEffect(() => {
-    // URLのパス（/en など）から言語を取得
+    // URLのパスから言語を取得（例: /en なら en）
     const pathLang = location.pathname.split('/')[1] as Language;
     
     if (SUPPORTED_LANGUAGES.includes(pathLang)) {
-      if (language !== pathLang) {
-        setLanguageState(pathLang);
-        localStorage.setItem('app_language', pathLang);
-      }
+      // URLに言語指定がある場合
+      setLanguageState(pathLang);
+      localStorage.setItem('app_language', pathLang);
     } else if (location.pathname === '/') {
-      // トップページの場合は以前選んだ言語を確認
-      const savedLanguage = localStorage.getItem('app_language') as Language;
-      if (savedLanguage && SUPPORTED_LANGUAGES.includes(savedLanguage) && savedLanguage !== 'jp') {
-          // 過去に英語などを選んでいた場合はそのURLへ飛ばす
-          navigate(`/${savedLanguage}`, { replace: true });
-      } else {
+      // トップページ（言語指定なし）にアクセスした場合、最適な言語を判定
+      const optimalLang = getOptimalLanguage();
+      
+      if (optimalLang === 'jp') {
+        // 日本語が最適な場合はそのまま（URLは / のまま）
         setLanguageState('jp');
+        localStorage.setItem('app_language', 'jp');
+      } else {
+        // 日本語以外が最適な場合は、該当する言語のURLへ自動でリダイレクト
+        navigate(`/${optimalLang}`, { replace: true });
       }
     }
-  }, [location.pathname, navigate, language]);
+    // バグの原因だった「language」と「navigate」への依存を監視から外し、誤作動を防止しました
+  }, [location.pathname]); 
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('app_language', lang);
-    // ボタンが押されたらURLも変更する
+    // ボタンが押されたら該当する言語のURLへ正確に遷移する
     const newPath = lang === 'jp' ? '/' : `/${lang}`;
     navigate(newPath);
   };
