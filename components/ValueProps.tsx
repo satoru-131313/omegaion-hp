@@ -31,7 +31,7 @@ const ValueProps: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 md:py-32 bg-[#020617] relative z-10 border-t border-slate-800/50">
+    <section id="features" className="py-20 md:py-32 bg-[#020617] relative z-10 border-t border-slate-800/50">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-16 md:mb-24">
           <motion.div
@@ -40,7 +40,7 @@ const ValueProps: React.FC = () => {
             viewport={{ once: true }}
             className="inline-block mb-4 px-3 py-1 border border-slate-700 rounded-full bg-slate-900/50"
           >
-            <span className="text-[10px] md:text-xs font-mono text-slate-400 tracking-wider">{t.valueProps.tag}</span>
+            <span className="text-[10px] md:text-xs font-mono text-slate-400 tracking-wider uppercase">{t.valueProps.tag}</span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -61,13 +61,14 @@ const ValueProps: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.2 }}
-              className={`p-8 rounded-2xl bg-slate-900/40 border border-slate-800 ${feat.bgBorder} transition-colors group flex flex-col items-center text-center`}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className={`p-8 rounded-2xl bg-slate-900/40 border border-slate-800 ${feat.bgBorder} transition-all flex flex-col items-center text-center`}
             >
               <div className={`p-4 rounded-xl bg-slate-950 border border-slate-800 mb-6 group-hover:scale-110 transition-transform ${feat.color}`}>
                 <feat.icon className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold text-slate-200 mb-4">{feat.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <h3 className="text-xl font-bold text-slate-200 mb-4 whitespace-pre-line">{feat.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed whitespace-pre-line">
                 {feat.desc}
               </p>
             </motion.div>

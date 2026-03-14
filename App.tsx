@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Hero from './components/Hero';
-import ValueProps from './components/ValueProps'; // ← インポートを追加
+import ValueProps from './components/ValueProps'; 
 import Problem from './components/Problem';
 import Regulations from './components/Regulations';
 import Visuals from './components/Visuals';
@@ -20,8 +20,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
       <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <div className="flex items-center">
-          <img src="/logo.png" alt="OmegaIon" className="h-6 sm:h-8 w-auto object-contain" />
+        <div className="flex items-center gap-2.5">
+          <img src="/logo.png" alt="OmegaIon Logo" className="h-7 sm:h-8 w-auto object-contain opacity-90" />
+          <span className="text-white text-base font-bold tracking-wider">OmegaIon</span>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
@@ -30,7 +31,7 @@ const Navbar = () => {
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
-                  className={`px-1.5 py-0.5 sm:px-2 sm:py-1 text-[10px] sm:text-xs font-bold rounded uppercase transition-colors ${language === lang ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+                  className={`px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-bold rounded uppercase transition-colors ${language === lang ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
                 >
                   {lang}
                 </button>
@@ -55,20 +56,13 @@ const PageContent = () => {
         <title>{t.seo.title}</title>
         <meta name="description" content={t.seo.description} />
         <meta name="keywords" content={t.seo.keywords} />
-
-        <link rel="alternate" href="https://omegaion.com/" hreflang="ja" />
-        <link rel="alternate" href="https://omegaion.com/en" hreflang="en" />
-        <link rel="alternate" href="https://omegaion.com/es" hreflang="es" />
-        <link rel="alternate" href="https://omegaion.com/fr" hreflang="fr" />
-        <link rel="alternate" href="https://omegaion.com/pt" hreflang="pt" />
-        <link rel="alternate" href="https://omegaion.com/" hreflang="x-default" />
       </Helmet>
 
       <div className="min-h-screen bg-slate-950 text-slate-50 selection:bg-cyan-500 selection:text-slate-950 relative">
         <Navbar />
         <main>
           <Hero />
-          <ValueProps /> {/* ← HeroとProblemの間に挿入 */}
+          <ValueProps /> 
           <Problem />
           <ChapterNav />
           <Visuals />
