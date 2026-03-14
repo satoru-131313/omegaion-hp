@@ -20,6 +20,24 @@ export const translations = {
       cta_sub: "デモ動画を見る",
       trust_label: "信頼と準拠のグローバルスタンダード:"
     },
+    valueProps: {
+      tag: "WHAT YOU CAN DO",
+      title: "複雑なESG・環境リスクを、\n直感的な『戦略』に変える。",
+      cards: {
+        visual: {
+          title: "環境リスクの直感的な可視化",
+          desc: "断片的な文字ニュースを、水・熱などの「属性」に分類して地図上へマッピング。地理的関係や時間変遷など、見過ごされていたサプライチェーンリスクを一目で把握できます。"
+        },
+        solution: {
+          title: "AIによるソリューション提案",
+          desc: "問題を見つけて終わりではありません。地図上の事象に対し、それを解決し得る世界中のクリーンテック企業や技術をAIが即座にマッチングし、具体的なアクションへと導きます。"
+        },
+        regulation: {
+          title: "複雑な規制の構造化・予測",
+          desc: "国際機関や国ごとに散在する複雑な環境規制の動向を整理。組織単位で情報を構造化することで、自社への影響を予測し、次の一手を確実なものにします。"
+        }
+      }
+    },
     problem: {
       tag: "THE CHALLENGE",
       title: "膨大な規制データと\n見えないサプライチェーンリスク",
@@ -172,6 +190,24 @@ export const translations = {
       cta_sub: "Watch Demo",
       trust_label: "Trusted Data & Compliance Standards:"
     },
+    valueProps: {
+      tag: "WHAT YOU CAN DO",
+      title: "Turn complex ESG risks\ninto intuitive strategies.",
+      cards: {
+        visual: {
+          title: "Intuitive Risk Visualization",
+          desc: "Fragmented news is categorized by attributes (Water, Heat, etc.) and mapped. Instantly grasp geographic correlations and hidden supply chain risks."
+        },
+        solution: {
+          title: "AI Solution Matching",
+          desc: "Don't just find problems. AI instantly matches global environmental issues with the clean-tech companies and technologies that can solve them."
+        },
+        regulation: {
+          title: "Regulation Structuring",
+          desc: "Organize messy regulatory updates by country and organization. Structure data to predict policy shifts and ensure global compliance."
+        }
+      }
+    },
     problem: {
       tag: "THE CHALLENGE",
       title: "Regulatory overload &\nhidden supply chain risks.",
@@ -308,6 +344,7 @@ export const translations = {
     nav: { login: "Iniciar sesión" },
     common: { patent: "Patente Pendiente", chapters: ["01 Visuals", "02 Solutions", "03 Rules"] },
     hero: { tag: "Inteligencia ESG", title: "Automatiza el Cumplimiento ESG.", highlight: "Monitorea Riesgos Globales", title_suffix: "en Tiempo Real.", desc: "Rastree regulaciones ambientales complejas y riesgos ocultos en la cadena de suministro. La IA reduce el tiempo de investigación.", cta: "Comenzar Gratis", cta_sub: "Ver Demo", trust_label: "Estándares de Datos Confiables:" },
+    valueProps: { tag: "QUÉ PUEDES HACER", title: "Convierte riesgos complejos\nen estrategias intuitivas.", cards: { visual: { title: "Visualización Intuitiva", desc: "Las noticias se categorizan por atributos y se mapean en tiempo real." }, solution: { title: "Coincidencia de Soluciones", desc: "La IA relaciona problemas ambientales con tecnologías limpias." }, regulation: { title: "Estructuración de Regulaciones", desc: "Organice actualizaciones regulatorias por país y organización." } } },
     problem: { tag: "EL DESAFÍO", title: "Sobrecarga regulatoria y\nriesgos ocultos.", desc: "Los profesionales de ESG pierden horas rastreando noticias globales y regulaciones complejas.", cards: { platform: { title: "Datos Dispersos", desc: "No hay una fuente única para los riesgos globales y el monitoreo de Alcance 3." }, reality: { title: "Complejidad Regulatoria", desc: "Es difícil mantenerse al día con los marcos ESG como CSRD y CBAM." }, noise: { title: "Ruido de Información", desc: "La búsqueda manual trae información irrelevante." }, risk: { title: "Riesgos Invisibles", desc: "Los riesgos físicos y de transición en cadenas de suministro distantes permanecen ocultos." } }, transition: "CÓMO LO RESUELVE OMEGAION" },
     visuals: { tag: "Core Feature 01 / Visualización", subtag: "Vista Ambiental", title: "Intuye la situación\nantes de leer.", desc: "No necesitas buscar nombres de lugares. La IA visualiza hechos globales en 8 idiomas directamente en el mapa.", elements_title: "7 Categorías de Problemas Ambientales", elements: { water: { name: "Agua", desc: "Inundaciones" }, heat: { name: "Calor", desc: "Calentamiento" }, plants: { name: "Plantas", desc: "Deforestación" }, life: { name: "Seres Vivos", desc: "Biodiversidad" }, soil: { name: "Tierra", desc: "Desertificación" }, ice: { name: "Hielo", desc: "Glaciares" }, poison: { name: "Veneno", desc: "Contaminación" } }, ui: { dashboard: "Omegaion Noticias", active_filters: "Temas Activos", total_signals: "Informes Analizados", search_placeholder: "Buscar eventos globales...", heatwave: "Temp. Récord: Texas", flood: "Inundación Mayor: India" } },
     features: { tag: "Core Feature 02 / Soluciones IA", subtag: "Propuesta de Solución", title: "Identifica problemas,\nencuentra soluciones.", desc: "La IA encuentra automáticamente tecnología y empresas globales para resolver problemas.", advantage: "Ventaja Omegaion", points: ["De ID a Solución sin expertos", "Vinculado con DB global de tecnología limpia"], ui: { issue_label: "PROBLEMA DETECTADO", issue_val: "Contaminación del Agua", severity: "Gravedad: Crítica", solution_label: "SOLUCIÓN ENCONTRADA", solution_val: "Unidad de Bio-Filtración", provider: "Proveedor: EcoTech Global", matching: "Emparejamiento IA" } },
@@ -320,6 +357,7 @@ export const translations = {
     nav: { login: "Connexion" },
     common: { patent: "Brevet En Instance", chapters: ["01 Visuals", "02 Solutions", "03 Rules"] },
     hero: { tag: "Intelligence ESG", title: "Automatisez la Conformité ESG.", highlight: "Surveillez les Risques", title_suffix: "en Temps Réel.", desc: "Suivez instantanément les réglementations environnementales européennes complexes et les risques cachés.", cta: "Commencer Gratuitement", cta_sub: "Voir la Démo", trust_label: "Normes de Données Fiables :" },
+    valueProps: { tag: "CE QUE VOUS POUVEZ FAIRE", title: "Transformez les risques en\nstratégies intuitives.", cards: { visual: { title: "Visualisation Intuitive", desc: "Les actualités sont cartographiées par attributs." }, solution: { title: "Solutions IA", desc: "L'IA associe les problèmes aux technologies propres." }, regulation: { title: "Structuration des Règles", desc: "Organisez les réglementations par pays et organisation." } } },
     problem: { tag: "LE DÉFI", title: "Surcharge réglementaire et\nrisques cachés.", desc: "Les professionnels de l'ESG perdent un temps précieux à suivre des réglementations complexes.", cards: { platform: { title: "Données Dispersées", desc: "Pas de source unique pour les risques mondiaux." }, reality: { title: "Complexité", desc: "Difficile de suivre des cadres comme la CSRD." }, noise: { title: "Bruit d'Information", desc: "La recherche manuelle produit des informations non pertinentes." }, risk: { title: "Risques Invisibles", desc: "Les risques dans les chaînes d'approvisionnement lointaines restent cachés." } }, transition: "COMMENT OMEGAION RÉSOUD CELA" },
     visuals: { tag: "Feature 01", subtag: "View", title: "Visualisez", desc: "Visualisez les faits mondiaux en 8 langues directement sur la carte.", elements_title: "7 Catégories", elements: { water: { name: "Eau", desc: "Inondations" }, heat: { name: "Chaleur", desc: "Réchauffement" }, plants: { name: "Plantes", desc: "Déforestation" }, life: { name: "Vie", desc: "Biodiversité" }, soil: { name: "Terre", desc: "Désertification" }, ice: { name: "Glace", desc: "Glaciers" }, poison: { name: "Poison", desc: "Pollution" } }, ui: { dashboard: "Dashboard", active_filters: "Filtres", total_signals: "Signaux", search_placeholder: "Chercher...", heatwave: "Chaleur", flood: "Inondation" } },
     features: { tag: "Feature 02", subtag: "Solutions", title: "Solutions", desc: "L'IA trouve des technologies mondiales pour vous.", advantage: "Avantage", points: ["Sans expert", "Base de données"], ui: { issue_label: "PROBLÈME", issue_val: "Pollution", severity: "Critique", solution_label: "SOLUTION", solution_val: "Filtre", provider: "Fournisseur", matching: "IA" } },
@@ -332,6 +370,7 @@ export const translations = {
     nav: { login: "Entrar" },
     common: { patent: "Patente Pendiente", chapters: ["01 Visuals", "02 Solutions", "03 Rules"] },
     hero: { tag: "Inteligência ESG", title: "Automatize a Conformidade ESG.", highlight: "Monitore Riscos Globais", title_suffix: "em Tempo Real.", desc: "Acompanhe regulamentações complexas e riscos ocultos na cadeia de suprimentos instantaneamente.", cta: "Comece Grátis", cta_sub: "Ver Demo", trust_label: "Padrões de Dados Confiáveis:" },
+    valueProps: { tag: "O QUE VOCÊ PODE FAZER", title: "Transforme riscos em\nestratégias intuitivas.", cards: { visual: { title: "Visualização Intuitiva", desc: "As notícias são mapeadas por atributos." }, solution: { title: "Soluções de IA", desc: "A IA conecta problemas com tecnologias limpas." }, regulation: { title: "Estruturação de Regras", desc: "Organize as atualizações regulatórias." } } },
     problem: { tag: "O DESAFIO", title: "Sobrecarga regulatória e\nriscos ocultos.", desc: "Profissionais de ESG perdem horas rastreando notícias globais fragmentadas.", cards: { platform: { title: "Dados Dispersos", desc: "Nenhuma fonte única para monitoramento." }, reality: { title: "Complexidade", desc: "Difícil acompanhar estruturas como a CSRD." }, noise: { title: "Ruído de Informação", desc: "Pesquisas manuais trazem informações irrelevantes." }, risk: { title: "Riscos Invisíveis", desc: "Riscos na cadeia de suprimentos permanecem ocultos." } }, transition: "COMO O OMEGAION RESOLVE ISSO" },
     visuals: { tag: "Feature 01", subtag: "View", title: "Visualize", desc: "A IA visualiza fatos globais em 8 idiomas.", elements_title: "7 Categorias", elements: { water: { name: "Água", desc: "Inundações" }, heat: { name: "Calor", desc: "Aquecimento" }, plants: { name: "Plantas", desc: "Desmatamento" }, life: { name: "Vida", desc: "Biodiversidade" }, soil: { name: "Terra", desc: "Desertificação" }, ice: { name: "Gelo", desc: "Glaciares" }, poison: { name: "Veneno", desc: "Poluição" } }, ui: { dashboard: "Dashboard", active_filters: "Filtros", total_signals: "Sinais", search_placeholder: "Buscar...", heatwave: "Calor", flood: "Inundação" } },
     features: { tag: "Feature 02", subtag: "Soluções", title: "Soluções", desc: "A IA encontra tecnologia global para você.", advantage: "Vantagem", points: ["Sem especialista", "Banco de dados"], ui: { issue_label: "PROBLEMA", issue_val: "Poluição", severity: "Crítico", solution_label: "SOLUÇÃO", solution_val: "Filtro", provider: "Fornecedor", matching: "IA" } },

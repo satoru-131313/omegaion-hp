@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Hero from './components/Hero';
+import ValueProps from './components/ValueProps'; // ← インポートを追加
 import Problem from './components/Problem';
 import Regulations from './components/Regulations';
 import Visuals from './components/Visuals';
@@ -15,22 +16,20 @@ import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
-  
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
       <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <div className="flex items-center">
           <img src="/logo.png" alt="OmegaIon" className="h-6 sm:h-8 w-auto object-contain" />
         </div>
-        
+
         <div className="flex items-center gap-2 sm:gap-4">
-          {/* スマホ用にgapとpaddingを縮小 */}
           <div className="flex items-center gap-0.5 sm:gap-1 bg-slate-900 border border-slate-700 rounded-lg p-0.5 sm:p-1">
              {(['jp', 'en', 'es', 'fr', 'pt'] as const).map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
-                  // スマホ用に文字サイズとパディングを縮小
                   className={`px-1.5 py-0.5 sm:px-2 sm:py-1 text-[10px] sm:text-xs font-bold rounded uppercase transition-colors ${language === lang ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
                 >
                   {lang}
@@ -56,7 +55,7 @@ const PageContent = () => {
         <title>{t.seo.title}</title>
         <meta name="description" content={t.seo.description} />
         <meta name="keywords" content={t.seo.keywords} />
-        
+
         <link rel="alternate" href="https://omegaion.com/" hreflang="ja" />
         <link rel="alternate" href="https://omegaion.com/en" hreflang="en" />
         <link rel="alternate" href="https://omegaion.com/es" hreflang="es" />
@@ -69,6 +68,7 @@ const PageContent = () => {
         <Navbar />
         <main>
           <Hero />
+          <ValueProps /> {/* ← HeroとProblemの間に挿入 */}
           <Problem />
           <ChapterNav />
           <Visuals />
