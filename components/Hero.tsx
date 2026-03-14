@@ -19,8 +19,8 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-grow flex items-center">
-        {/* 2カラムレイアウト：左にテキストとCTA、右にデバイス画像 */}
-        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-center w-full max-w-7xl mx-auto">
+        {/* 画像を極限まで大きくするため、最大幅を1400pxに拡張し、比率を調整 */}
+        <div className="grid lg:grid-cols-[4fr_6fr] xl:grid-cols-[3.5fr_6.5fr] gap-6 lg:gap-10 items-center w-full max-w-[1400px] mx-auto">
           
           {/* 左カラム：テキスト領域 */}
           <motion.div style={{ y: y1 }} className="space-y-5 sm:space-y-6 relative z-20">
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2] tracking-tight text-white whitespace-pre-line"
+              className="text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2] tracking-tight text-white whitespace-pre-line"
             >
               {t.hero.title}<br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 drop-shadow-[0_0_30px_rgba(52,211,238,0.4)]">
@@ -75,27 +75,27 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* 右カラム：GIFとスマホ画像のスタック配置 */}
-          <div className="relative z-20 mt-8 lg:mt-0 h-[300px] sm:h-[400px] lg:h-[480px] w-full flex items-center justify-center perspective-1000">
+          {/* 右カラム：UIのサイズを極限まで拡大 */}
+          <div className="relative z-20 mt-8 lg:mt-0 h-[350px] sm:h-[450px] lg:h-[550px] xl:h-[600px] w-full flex items-center justify-center perspective-1000">
             
-            {/* メインPC（GIF） */}
+            {/* メインPC（GIF）- 幅を95%まで拡大 */}
             <motion.img
               initial={{ opacity: 0, x: 20, y: 0 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.5, duration: 1, type: "spring" }}
               src="/ui-pc.gif" 
               alt="OmegaIon PC UI" 
-              className="absolute left-0 w-[85%] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_40px_rgba(34,211,238,0.2)] z-10"
+              className="absolute left-0 w-[95%] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_40px_rgba(34,211,238,0.2)] z-10"
             />
 
-            {/* サブスマホ（画像）を右下に配置 */}
+            {/* サブスマホ（画像）- PCに被らないギリギリの右端へ配置しサイズアップ */}
             <motion.img
               initial={{ opacity: 0, x: 20, y: 20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.8, duration: 1, type: "spring" }}
               src="/ui-mobile.png" 
               alt="OmegaIon Mobile UI" 
-              className="absolute right-0 bottom-[-5%] w-[25%] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.8)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)] z-20 hover:scale-105 transition-transform cursor-pointer"
+              className="absolute right-0 lg:right-[-2%] bottom-[-5%] w-[28%] xl:w-[30%] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.8)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)] z-20 hover:scale-105 transition-transform cursor-pointer"
             />
 
             {/* 装飾用の光彩 */}
