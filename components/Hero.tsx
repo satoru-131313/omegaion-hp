@@ -11,6 +11,7 @@ const Hero: React.FC = () => {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-16 perspective-2000">
+      {/* 背景エフェクト */}
       <div className="absolute inset-0 z-0 bg-[#020617]">
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-cyan-900/20 rounded-full blur-[120px] mix-blend-screen"></div>
          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100"></div>
@@ -18,7 +19,8 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-grow flex items-center">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center w-full">
+        {/* 画像を強調するため、gridの比率を lg:grid-cols-[4fr_6fr] に変更 */}
+        <div className="grid lg:grid-cols-[4fr_6fr] gap-8 lg:gap-12 items-center w-full">
           
           <motion.div style={{ y: y1 }} className="space-y-6 sm:space-y-8 relative z-20">
             <motion.div 
@@ -75,16 +77,15 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ delay: 0.5, duration: 1, type: "spring" }}
-            className="relative z-20 perspective-1000 mt-8 lg:mt-0"
+            // lg:scale-105 を追加して画像を少し大きく見せます
+            className="relative z-20 perspective-1000 mt-8 lg:mt-0 lg:scale-105 lg:origin-left"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(34,211,238,0.15)] bg-transparent">
-              <img 
-                src="/ui-mockup.png" 
-                alt="OmegaIon Dashboard UI" 
-                className="w-full h-auto object-contain drop-shadow-2xl"
-              />
-            </div>
-            <div className="absolute -inset-4 bg-gradient-to-tr from-cyan-500/10 to-emerald-500/10 rounded-[3rem] blur-3xl -z-10"></div>
+            {/* 四角い背景色や光彩divを全削除。画像単体にdrop-shadowをかけて輪郭だけを光らせます */}
+            <img 
+              src="/ui-mockup.png" 
+              alt="OmegaIon Dashboard UI" 
+              className="w-full h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_40px_rgba(34,211,238,0.25)]"
+            />
           </motion.div>
 
         </div>
