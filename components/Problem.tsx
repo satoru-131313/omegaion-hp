@@ -1,20 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Layers, MapPin, EyeOff, FileWarning } from 'lucide-react';
+import { Database, AlertTriangle, EyeOff, FileWarning } from 'lucide-react'; // アイコンもより実務的なものに変更
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Problem: React.FC = () => {
   const { t } = useLanguage();
-  
+
   const painPoints = [
     {
-      icon: Layers,
+      icon: Database,
       title: t.problem.cards.platform.title,
       desc: t.problem.cards.platform.desc,
       color: "text-blue-400"
     },
     {
-      icon: MapPin,
+      icon: AlertTriangle,
       title: t.problem.cards.reality.title,
       desc: t.problem.cards.reality.desc,
       color: "text-emerald-400"
@@ -47,7 +47,7 @@ const Problem: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="inline-block mb-3 md:mb-4 px-3 py-1 border border-slate-700 rounded-full bg-slate-900/50 backdrop-blur-sm"
           >
-            <span className="text-[10px] md:text-xs font-mono text-slate-400">{t.problem.tag}</span>
+            <span className="text-[10px] md:text-xs font-mono text-slate-400 tracking-wider">{t.problem.tag}</span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
