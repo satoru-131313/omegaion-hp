@@ -11,7 +11,6 @@ const Hero: React.FC = () => {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-16 perspective-2000">
-      {/* 背景エフェクト */}
       <div className="absolute inset-0 z-0 bg-[#020617]">
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-cyan-900/20 rounded-full blur-[120px] mix-blend-screen"></div>
          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100"></div>
@@ -19,7 +18,6 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-grow flex items-center">
-        {/* 2カラム構成：左側にテキストとCTA、右側に実機UI */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center w-full">
           
           <motion.div style={{ y: y1 }} className="space-y-6 sm:space-y-8 relative z-20">
@@ -73,7 +71,6 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* 右カラム：実際のUI（モックアップ画像） */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
@@ -81,21 +78,18 @@ const Hero: React.FC = () => {
             className="relative z-20 perspective-1000 mt-8 lg:mt-0"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(34,211,238,0.15)] bg-transparent">
-              {/* いただいた画像をここに配置します */}
               <img 
-                src="/ui-mockup.jpg" 
+                src="/ui-mockup.png" 
                 alt="OmegaIon Dashboard UI" 
                 className="w-full h-auto object-contain drop-shadow-2xl"
               />
             </div>
-            {/* 装飾用の光彩 */}
             <div className="absolute -inset-4 bg-gradient-to-tr from-cyan-500/10 to-emerald-500/10 rounded-[3rem] blur-3xl -z-10"></div>
           </motion.div>
 
         </div>
       </div>
 
-      {/* 信頼性（Trust & Authority）の可視化セクション */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

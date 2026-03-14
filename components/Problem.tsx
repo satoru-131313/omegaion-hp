@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Database, AlertTriangle, EyeOff, FileWarning } from 'lucide-react'; // アイコンもより実務的なものに変更
+import { Database, AlertTriangle, EyeOff, FileWarning } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Problem: React.FC = () => {
