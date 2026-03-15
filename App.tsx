@@ -2,7 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Hero from './components/Hero';
+import TrustTicker from './components/TrustTicker'; // ← 新規追加
 import ValueProps from './components/ValueProps'; 
+import UseCases from './components/UseCases'; // ← 新規追加
 import Problem from './components/Problem';
 import Regulations from './components/Regulations';
 import Visuals from './components/Visuals';
@@ -62,7 +64,9 @@ const PageContent = () => {
         <Navbar />
         <main>
           <Hero />
+          <TrustTicker /> {/* ← 追加 */}
           <ValueProps /> 
+          <UseCases /> {/* ← 追加 */}
           <Problem />
           <ChapterNav />
           <Visuals />
