@@ -8,8 +8,8 @@ const Footer: React.FC = () => {
         
         <div className="flex flex-col items-center md:items-start gap-4">
           <div className="flex items-center gap-3">
+            {/* ★変更: 隣のspanタグを削除し、ロゴ画像のみにしました */}
             <img src="/logo.png" alt="OmegaIon" className="h-6 sm:h-7 w-auto object-contain opacity-80" />
-            <span className="text-slate-300 text-base font-bold tracking-wider">OmegaIon</span>
           </div>
           <div className="text-slate-500 text-xs text-center md:text-left leading-relaxed">
             &copy; {new Date().getFullYear()} OmegaIon. All rights reserved.<br />

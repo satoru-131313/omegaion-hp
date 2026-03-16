@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Hero from './components/Hero';
-import TrustTicker from './components/TrustTicker'; // ← 新規追加
+import TrustTicker from './components/TrustTicker';
 import ValueProps from './components/ValueProps'; 
-import UseCases from './components/UseCases'; // ← 新規追加
+import UseCases from './components/UseCases';
 import Problem from './components/Problem';
 import Regulations from './components/Regulations';
 import Visuals from './components/Visuals';
@@ -23,8 +23,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
       <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
+          {/* ★変更: 隣のspanタグを削除し、ロゴ画像のみにしました */}
           <img src="/logo.png" alt="OmegaIon Logo" className="h-7 sm:h-8 w-auto object-contain opacity-90" />
-          <span className="text-white text-base font-bold tracking-wider">OmegaIon</span>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
@@ -64,9 +64,9 @@ const PageContent = () => {
         <Navbar />
         <main>
           <Hero />
-          <TrustTicker /> {/* ← 追加 */}
+          <TrustTicker />
           <ValueProps /> 
-          <UseCases /> {/* ← 追加 */}
+          <UseCases />
           <Problem />
           <ChapterNav />
           <Visuals />
