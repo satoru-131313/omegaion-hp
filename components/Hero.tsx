@@ -9,6 +9,20 @@ const Hero: React.FC = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, 50]);
   const { t } = useLanguage();
 
+  // ★ 追加: ボタンの要素を共通化して変数にまとめることで、PC用とスマホ用の両方で使い回せるようにします。
+  const CtaButtons = (
+    <>
+      <a href="https://app.omegaion.com/login" className="group px-6 py-3 bg-white text-slate-950 font-bold rounded-full hover:bg-cyan-50 transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_50px_rgba(34,211,238,0.4)] text-sm md:text-base">
+        {t.hero.cta}
+        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </a>
+      <button className="px-6 py-3 bg-slate-800/50 text-white font-medium rounded-full hover:bg-slate-700/50 transition-all border border-slate-700 flex items-center justify-center gap-2 backdrop-blur-sm text-sm md:text-base">
+        <PlayCircle className="w-4 h-4" />
+        {t.hero.cta_sub}
+      </button>
+    </>
+  );
+
   return (
     <section ref={containerRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20 pb-12 perspective-2000">
       {/* 背景エフェクト */}
@@ -19,9 +33,8 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-grow flex items-center">
-        {/* 画像を極限まで大きくするため、最大幅を1400pxに拡張し、比率を調整 */}
         <div className="grid lg:grid-cols-[4fr_6fr] xl:grid-cols-[3.5fr_6.5fr] gap-6 lg:gap-10 items-center w-full max-w-[1400px] mx-auto">
-          
+
           {/* 左カラム：テキスト領域 */}
           <motion.div style={{ y: y1 }} className="space-y-5 sm:space-y-6 relative z-20">
             <motion.div 
@@ -57,28 +70,19 @@ const Hero: React.FC = () => {
                {t.hero.desc}
             </motion.p>
 
-            {/* CTAボタン */}
+            {/* ★ 変更: PC用のCTAボタン (lg以上の画面幅でのみ表示) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-3 pt-2"
+              className="hidden lg:flex flex-col sm:flex-row gap-3 pt-2"
             >
-               <a href="https://app.omegaion.com/login" className="group px-6 py-3 bg-white text-slate-950 font-bold rounded-full hover:bg-cyan-50 transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_50px_rgba(34,211,238,0.4)] text-sm md:text-base">
-                 {t.hero.cta}
-                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-               </a>
-               <button className="px-6 py-3 bg-slate-800/50 text-white font-medium rounded-full hover:bg-slate-700/50 transition-all border border-slate-700 flex items-center justify-center gap-2 backdrop-blur-sm text-sm md:text-base">
-                 <PlayCircle className="w-4 h-4" />
-                 {t.hero.cta_sub}
-               </button>
+               {CtaButtons}
             </motion.div>
           </motion.div>
 
-          {/* 右カラム：UIのサイズを極限まで拡大 */}
+          {/* 右カラム：UI画像エリア */}
           <div className="relative z-20 mt-8 lg:mt-0 h-[350px] sm:h-[450px] lg:h-[550px] xl:h-[600px] w-full flex items-center justify-center perspective-1000">
-            
-            {/* メインPC（GIF）- 幅を95%まで拡大 */}
             <motion.img
               initial={{ opacity: 0, x: 20, y: 0 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
@@ -87,8 +91,6 @@ const Hero: React.FC = () => {
               alt="OmegaIon PC UI" 
               className="absolute left-0 w-[95%] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_40px_rgba(34,211,238,0.2)] z-10"
             />
-
-            {/* サブスマホ（画像）- PCに被らないギリギリの右端へ配置しサイズアップ */}
             <motion.img
               initial={{ opacity: 0, x: 20, y: 20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
@@ -97,10 +99,18 @@ const Hero: React.FC = () => {
               alt="OmegaIon Mobile UI" 
               className="absolute right-0 lg:right-[-2%] bottom-[-5%] w-[28%] xl:w-[30%] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.8)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)] z-20 hover:scale-105 transition-transform cursor-pointer"
             />
-
-            {/* 装飾用の光彩 */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-gradient-to-tr from-cyan-500/10 to-emerald-500/10 rounded-full blur-3xl -z-10"></div>
           </div>
+
+          {/* ★ 追加: スマホ用のCTAボタン (lg未満の画面幅でのみ表示、UI画像の下に配置) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex lg:hidden flex-col sm:flex-row gap-3 pt-4 pb-4 w-full justify-center relative z-20"
+          >
+             {CtaButtons}
+          </motion.div>
 
         </div>
       </div>
