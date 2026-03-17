@@ -15,10 +15,15 @@ const Hero: React.FC = () => {
         {t.hero.cta}
         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
       </a>
-      <button className="px-6 py-3 bg-slate-800/50 text-white font-medium rounded-full hover:bg-slate-700/50 transition-all border border-slate-700 flex items-center justify-center gap-2 backdrop-blur-sm text-sm md:text-base">
+      <a 
+        href="https://www.youtube.com/@officialOmegaion" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="px-6 py-3 bg-slate-800/50 text-white font-medium rounded-full hover:bg-slate-700/50 transition-all border border-slate-700 flex items-center justify-center gap-2 backdrop-blur-sm text-sm md:text-base"
+      >
         <PlayCircle className="w-4 h-4" />
         {t.hero.cta_sub}
-      </button>
+      </a>
     </>
   );
 
