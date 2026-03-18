@@ -36,7 +36,6 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-grow flex items-center">
-        {/* ★変更: lgの時の左カラムの比率を4.5にして少し広げました */}
         <div className="grid lg:grid-cols-[4.5fr_5.5fr] xl:grid-cols-[4fr_6fr] gap-6 lg:gap-10 items-center w-full max-w-[1400px] mx-auto">
 
           <motion.div style={{ y: y1 }} className="space-y-5 sm:space-y-6 relative z-20">
@@ -50,7 +49,6 @@ const Hero: React.FC = () => {
               {t.hero.tag}
             </motion.div>
 
-            {/* ★変更: textのサイズを微調整し、break-keepを追加して変な改行を防ぐ */}
             <motion.h1 
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -84,15 +82,22 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          <div className="relative z-20 mt-8 lg:mt-0 h-[350px] sm:h-[450px] lg:h-[550px] xl:h-[600px] w-full flex items-center justify-center perspective-1000">
+          {/* ▼ 修正した画像コンテナエリア ▼ */}
+          <div className="relative z-20 mt-8 lg:mt-0 w-full flex items-center justify-center perspective-1000">
+            {/* 背景の光彩エフェクト */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-gradient-to-tr from-cyan-500/10 to-emerald-500/10 rounded-full blur-3xl -z-10"></div>
+
+            {/* PC画像：高さを自動計算させるため absolute -> relative に変更 */}
             <motion.img
               initial={{ opacity: 0, x: 20, y: 0 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.5, duration: 1, type: "spring" }}
               src="/ui-pc.gif" 
               alt="OmegaIon PC UI" 
-              className="absolute left-0 w-[95%] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_40px_rgba(34,211,238,0.2)] z-10"
+              className="relative w-full sm:w-[95%] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_40px_rgba(34,211,238,0.2)] z-10"
             />
+
+            {/* モバイル画像：PC画像に重ねるため absolute のまま */}
             <motion.img
               initial={{ opacity: 0, x: 20, y: 20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
@@ -101,8 +106,8 @@ const Hero: React.FC = () => {
               alt="OmegaIon Mobile UI" 
               className="absolute right-0 lg:right-[-2%] bottom-[-5%] w-[28%] xl:w-[30%] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.8)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)] z-20 hover:scale-105 transition-transform cursor-pointer"
             />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-gradient-to-tr from-cyan-500/10 to-emerald-500/10 rounded-full blur-3xl -z-10"></div>
           </div>
+          {/* ▲ 修正箇所ここまで ▲ */}
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
