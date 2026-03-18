@@ -6,6 +6,7 @@ const Footer: React.FC = () => {
     <footer className="bg-[#020617] border-t border-slate-800/50 py-12 relative z-10">
       <div className="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
         
+        {/* 左側: ロゴとコピーライト */}
         <div className="flex flex-col items-center md:items-start gap-4">
           <div className="flex items-center gap-3">
             {/* ★変更: 隣のspanタグを削除し、ロゴ画像のみにしました */}
@@ -17,6 +18,24 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
+        {/* 中央: Product Hunt バッジ */}
+        <div className="flex flex-col items-center justify-center pt-2">
+          <a 
+            href="https://www.producthunt.com/products/omegaion?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-omegaion" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:opacity-80 transition-opacity duration-300"
+          >
+            <img 
+              alt="OmegaIon - AI-powered Elemental Map for environmental risk & solutions. | Product Hunt" 
+              width="250" 
+              height="54" 
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1100597&theme=light&t=1773823623380" 
+            />
+          </a>
+        </div>
+
+        {/* 右側: Contact Us */}
         <div className="flex flex-col items-center md:items-end gap-3 text-sm text-slate-400">
           <span className="text-slate-500 text-xs font-bold tracking-widest uppercase mb-1">Contact Us</span>
           <div className="flex items-center gap-2.5">
