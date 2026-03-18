@@ -38,7 +38,8 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex-grow flex items-center">
         <div className="grid lg:grid-cols-[4.5fr_5.5fr] xl:grid-cols-[4fr_6fr] gap-6 lg:gap-10 items-center w-full max-w-[1400px] mx-auto">
 
-          <motion.div style={{ y: y1 }} className="space-y-5 sm:space-y-6 relative z-20">
+          {/* ▼ 修正: min-w-0 を追加して、テキストが画面外に押し出されるのを防ぐ */}
+          <motion.div style={{ y: y1 }} className="space-y-5 sm:space-y-6 relative z-20 min-w-0">
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -49,11 +50,12 @@ const Hero: React.FC = () => {
               {t.hero.tag}
             </motion.div>
 
+            {/* ▼ 修正: break-keep を break-words に変更 */}
             <motion.h1 
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-3xl md:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-bold leading-[1.3] tracking-tight text-white whitespace-pre-line break-keep"
+              className="text-3xl md:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-bold leading-[1.3] tracking-tight text-white whitespace-pre-line break-words"
             >
               {t.hero.title}<br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 drop-shadow-[0_0_30px_rgba(52,211,238,0.4)]">
@@ -82,22 +84,20 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* ▼ 修正した画像コンテナエリア ▼ */}
-          <div className="relative z-20 mt-8 lg:mt-0 w-full flex items-center justify-center perspective-1000">
-            {/* 背景の光彩エフェクト */}
+          {/* ▼ 修正: min-w-0 を追加して画像枠の突き抜けを防止 */}
+          <div className="relative z-20 mt-8 lg:mt-0 w-full flex items-center justify-center perspective-1000 min-w-0">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-gradient-to-tr from-cyan-500/10 to-emerald-500/10 rounded-full blur-3xl -z-10"></div>
 
-            {/* PC画像：高さを自動計算させるため absolute -> relative に変更 */}
+            {/* ▼ 修正: max-w-full を追加 */}
             <motion.img
               initial={{ opacity: 0, x: 20, y: 0 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.5, duration: 1, type: "spring" }}
               src="/ui-pc.gif" 
               alt="OmegaIon PC UI" 
-              className="relative w-full sm:w-[95%] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_40px_rgba(34,211,238,0.2)] z-10"
+              className="relative w-full max-w-full sm:w-[95%] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_40px_rgba(34,211,238,0.2)] z-10"
             />
 
-            {/* モバイル画像：PC画像に重ねるため absolute のまま */}
             <motion.img
               initial={{ opacity: 0, x: 20, y: 20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
@@ -107,7 +107,6 @@ const Hero: React.FC = () => {
               className="absolute right-0 lg:right-[-2%] bottom-[-5%] w-[28%] xl:w-[30%] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.8)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)] z-20 hover:scale-105 transition-transform cursor-pointer"
             />
           </div>
-          {/* ▲ 修正箇所ここまで ▲ */}
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
