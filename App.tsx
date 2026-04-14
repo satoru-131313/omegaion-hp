@@ -10,7 +10,7 @@ import Regulations from './components/Regulations';
 import Visuals from './components/Visuals';
 import Features from './components/Features';
 import FutureScope from './components/FutureScope';
-import Pricing from './components/Pricing';
+// import Pricing from './components/Pricing'; // ← ★インポートをコメントアウトして無効化
 import BottomCTA from './components/BottomCTA';
 import Footer from './components/Footer';
 import ChapterNav from './components/ChapterNav';
@@ -73,7 +73,7 @@ const PageContent = () => {
           <Features />
           <Regulations />
           <FutureScope />
-          <Pricing />
+          {/* <Pricing /> */} {/* ← ★画面表示をコメントアウトして非表示化 */}
           <BottomCTA />
         </main>
         <Footer />
